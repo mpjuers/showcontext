@@ -16,12 +16,13 @@
 " 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 
 " autocmd that will set up the w:created variable
-autocmd VimEnter * autocmd WinEnter * let w:created=1
 
-" Consider this one, since WinEnter doesn't fire on the first window created when Vim launches.
-
-" Example of how to use w:created in an autocmd to initialize a window-local option
-autocmd WinEnter * if !exists('w:created') | let w:contextlist_open = 0 | endif
+augroup created
+    autocmd!
+    autocmd VimEnter * let w:contextlist_open = 0
+    autocmd WinEnter * if !exists('w:created') | let w:contextlist_open = 0 | endif
+    autocmd VimEnter * autocmd WinEnter * let w:created=1
+augroup END
 
 " from https://vi.stackexchange.com/questions/20078/plugin-to-show-enclosing-indentation-levels/20089#20089
 function! ShowContext() abort
