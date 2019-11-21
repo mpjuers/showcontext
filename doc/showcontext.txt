@@ -1,0 +1,43 @@
+*showcontext.vim* Find yourself when you're lost!
+ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____ ____                       ~                      
+||s |||h |||o |||w |||C |||o |||n |||t |||e |||x |||t ||                      ~
+||__|||__|||__|||__|||__|||__|||__|||__|||__|||__|||__||                      ~
+|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|/__\|                      ~
+
+==============================================================================
+
+1. Introduction...................................................|showcontext|
+2. Installation......................................|showcontext-installation|
+3. Usage ...................................................|showcontext-usage|
+4. Acknowledgements..............................|showcontext-acknowledgements|
+
+==============================================================================
+Introduction......................................................*showcontext*
+
+Ever have to scroll back up to see which `if` statement you're in? This plugin
+is for you. Simply call `Toggle_contextlist()` and a location list will open
+showing you the last lines of all enclosing indentation levels.
+
+==============================================================================
+Installation.........................................*showcontext-installation*
+
+With a plugin manager (vim-plug shown):
+
+`Plug 'mpjuers/showcontext'`
+
+`:PlugInstall`
+
+==============================================================================
+Usage.......................................................*showcontext-usage*
+
+Simply map `Toggle_contextlist()` to use it.
+
+`nnoremap <leader>lc :call Toggle_contextlist()<CR>`
+
+==============================================================================
+Acknowledgements.................................*showcontext-acknowledgements*
+
+Thanks to Rich for doing most of the work!
+https://vi.stackexchange.com/questions/20078/plugin-to-show-enclosing-indentation-levels/20089#20089
+
+Enjoy!
