@@ -4,6 +4,8 @@ showcontext.vim opens a location list in the current window that shows the last
 line with less than or equal indentation to the current line. This allows you to see where you are
 in a file without scrolling back up.
 
+![](showcontext.gif)
+
 Out of the box, showcontext.vim does nothing; you must map the function
 Toggle_contextlist like so:
 `nnoremap <leader>lc :call Toggle_contextlist()<CR>`
