@@ -6,7 +6,7 @@ in a file without scrolling back up.
 
 Out of the box, showcontext.vim does nothing; you must map the function
 Toggle_contextlist like so:
-nnoremap <leader>lc :call Toggle_contextlist()<CR>
+`nnoremap <leader>lc :call Toggle_contextlist()<CR>`
 
 That's it!
 
