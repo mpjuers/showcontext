@@ -24,22 +24,81 @@ augroup created
     autocmd VimEnter * autocmd WinEnter * let w:created=1
 augroup END
 
+function! ShowContext_bracketstatus(line, status) abort
+    let l:brackets = {"closed": 0, "open": 0}
+    for character in split(a:line, '\zs')
+        if character == ")"
+            let l:brackets["closed"] += 1
+        endif
+        if character == "("
+            let l:brackets["open"] += 1
+        endif
+    endfor
+    if a:status == "closed"
+        if l:brackets["closed"] > l:brackets["open"]
+            return 1
+        else
+            return 0
+        endif
+    elseif a:status == "open"
+        if l:brackets["open"] > l:brackets["closed"]
+            return 1
+        else
+            return 0
+        endif
+    endif
+endfunction
+
+
+function! s:ShowContext_bracketstatus(line, status) abort
+    let l:brackets = {"closed": 0, "open": 0}
+    for character in split(a:line, '\zs')
+        if character == ")"
+            let l:brackets["closed"] += 1
+        endif
+        if character == "("
+            let l:brackets["open"] += 1
+        endif
+    endfor
+    if a:status == "closed"
+        if l:brackets["closed"] > l:brackets["open"]
+            return 1
+        else
+            return 0
+        endif
+    elseif a:status == "open"
+        if l:brackets["open"] > l:brackets["closed"]
+            return 1
+        else
+            return 0
+        endif
+    endif
+endfunction
+
+
 " from https://vi.stackexchange.com/questions/20078/plugin-to-show-enclosing-indentation-levels/20089#20089
 function! ShowContext() abort
-  let items = []
-  let l = line('.')
-  let indent = 1000
-  while l >= 0
-    if indent(l) < indent && getline(l) != ''
-      call add(items, getline(l))
-      let indent = indent(l)
-      if indent == 0
-        break
-      endif
-    endif
-    let l -= 1
-  endwhile
-  lgetexpr reverse(items)
+    let items = []
+    let l:l = line('.')
+    let l:indent = 1000
+    while l:l >= 0
+        if s:ShowContext_bracketstatus(getline(l), "closed")
+            let l:subindent = indent(l)
+            while s:ShowContext_bracketstatus(getline(l:l), "open") == 0 && indent(l:l) >= l:subindent
+                call add(items, getline(l:l))
+                let l:l -= 1
+            endwhile
+        endif
+        if indent(l) < l:indent && getline(l:l) != ''
+            call add(items, getline(l:l))
+            let l:indent = indent(l)
+            if l:indent == 0
+                break
+            endif
+        endif
+        let l:l -= 1
+    endwhile
+    lgetexpr reverse(items)
 endfunction
 
 function! Toggle_contextlist()
