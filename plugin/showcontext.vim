@@ -24,32 +24,6 @@ augroup created
     autocmd VimEnter * autocmd WinEnter * let w:created=1
 augroup END
 
-function! ShowContext_bracketstatus(line, status) abort
-    let l:brackets = {"closed": 0, "open": 0}
-    for character in split(a:line, '\zs')
-        if character == ")"
-            let l:brackets["closed"] += 1
-        endif
-        if character == "("
-            let l:brackets["open"] += 1
-        endif
-    endfor
-    if a:status == "closed"
-        if l:brackets["closed"] > l:brackets["open"]
-            return 1
-        else
-            return 0
-        endif
-    elseif a:status == "open"
-        if l:brackets["open"] > l:brackets["closed"]
-            return 1
-        else
-            return 0
-        endif
-    endif
-endfunction
-
-
 function! s:ShowContext_bracketstatus(line, status) abort
     let l:brackets = {"closed": 0, "open": 0}
     for character in split(a:line, '\zs')
