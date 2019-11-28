@@ -24,6 +24,21 @@ augroup created
     autocmd VimEnter * autocmd WinEnter * let w:created=1
 augroup END
 
+augroup ShowContextList
+    autocmd!
+    autocmd WinEnter * call ShowContext_switch_on()
+augroup END
+
+function! ShowContext_switch_on()
+    if (exists("w:contextlist_open") && w:contextlist_open == 1)
+        augroup ContextListRunning
+            autocmd!
+            autocmd BufLeave * autocmd! ContextListRunning
+            autocmd CursorHold * call ShowContext()
+        augroup END
+    endif
+endfunction
+
 function! s:ShowContext_bracketstatus(line, status) abort
     let l:brackets = {"closed": 0, "open": 0}
     for character in split(a:line, '\zs')
@@ -78,14 +93,9 @@ endfunction
 function! Toggle_contextlist()
     if w:contextlist_open == 1
         let w:contextlist_open = 0
-        autocmd! ContextList
         above lclose
     else
         let w:contextlist_open = 1
-        augroup ContextList
-            autocmd!
-            autocmd CursorHold * call ShowContext()
-        augroup END
         above lopen
         wincmd p
     endif
