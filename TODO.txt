@@ -1,2 +1,3 @@
 - Allow jumping to indentation line from context list.
 - Allow supression of "informative" indentation lines.
+- Intelligently close location list.
