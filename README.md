@@ -7,7 +7,7 @@ in a file without scrolling back up.
 ![](showcontext.gif)
 
 Out of the box, showcontext.vim does nothing; you must map the function
-`Toggle_contextlist` like so:
+`ShowContext_toggle()` like so:
 `nnoremap <leader>lc :call ShowContext_toggle()<CR>`
 
 That's it!

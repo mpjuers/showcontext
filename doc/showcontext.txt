@@ -30,7 +30,7 @@ With a plugin manager (vim-plug shown):
 ==============================================================================
 Usage.......................................................*showcontext-usage*
 
-Simply map `Toggle_contextlist()` to use it.
+Simply map `ShowContext_toggle()` to use it.
 
 `nnoremap <leader>lc :call ShowContext_toggle()<CR>`
 
