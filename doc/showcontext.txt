@@ -8,8 +8,9 @@
 
 1. Introduction...................................................|showcontext|
 2. Installation......................................|showcontext-installation|
-3. Usage ...................................................|showcontext-usage|
-4. Acknowledgements..............................|showcontext-acknowledgements|
+3. Usage....................................................|showcontext-usage|
+4. Configuration....................................|showcontext-configuration|
+5. Acknowledgements..............................|showcontext-acknowledgements|
 
 ==============================================================================
 Introduction......................................................*showcontext*
@@ -33,6 +34,17 @@ Usage.......................................................*showcontext-usage*
 Simply map `ShowContext_toggle()` to use it.
 
 `nnoremap <leader>lc :call ShowContext_toggle()<CR>`
+
+==============================================================================
+Configuration.......................................*showcontext-configuration*
+
+Configuration Options
+
+g:ShowContext_windowheight..........................................default: 15
+    Controls the height of the scratch buffer created by ShowContext_toggle()
+
+g:ShowContext_windowloc........................................default: "above"
+    Where the contextlist opens. Either "above" or "below".
 
 ==============================================================================
 Acknowledgements.................................*showcontext-acknowledgements*
