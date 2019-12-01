@@ -14,3 +14,11 @@ That's it!
 
 Credit to Rich at vi.stackexchange for doing most of the work.
 https://vi.stackexchange.com/questions/20078/plugin-to-show-enclosing-indentation-levels/20089#20089
+
+# Installation
+
+I use Vim-Plug.
+
+Simply add `Plug "mpjuers/showcontext"` to your `.vimrc` in the appropriate
+place and `:PlugInstall`. Should work with other plugin managers or manual 
+installation (see docs) as well.
