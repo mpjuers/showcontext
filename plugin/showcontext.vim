@@ -18,6 +18,7 @@
 " autocmd that will set up the w:created variable
 
 let g:ShowContext_windowheight = 15
+let g:ShowContext_windowloc = "above"
 
 augroup created
     autocmd!
@@ -98,9 +99,9 @@ function! ShowContext_toggle()
     if w:contextlist_open == 1
         let w:contextlist_open = 0
         bdelete! contextlist
-    else
+    elseif w:contextlist_open == 0
         let w:contextlist_open = 1
-        execute "above " . string(g:ShowContext_windowheight) . "new" 
+        execute g:ShowContext_windowloc . " " . string(g:ShowContext_windowheight) . "new" 
         setlocal buftype=nofile
         setlocal bufhidden=hide
         setlocal noswapfile
