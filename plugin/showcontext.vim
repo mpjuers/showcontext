@@ -17,6 +17,8 @@
 
 " autocmd that will set up the w:created variable
 
+let g:ShowContext_windowheight = 15
+
 augroup created
     autocmd!
     autocmd VimEnter * let w:contextlist_open = 0
@@ -87,16 +89,22 @@ function! ShowContext() abort
         endif
         let l:l -= 1
     endwhile
-    lgetexpr reverse(items)
+    let l:contextline = 1
+    call deletebufline("contextlist", 1, "$")
+    call setbufline("contextlist", 1, reverse(items))
 endfunction
 
-function! Toggle_contextlist()
+function! ShowContext_toggle()
     if w:contextlist_open == 1
         let w:contextlist_open = 0
-        above lclose
+        bdelete! contextlist
     else
         let w:contextlist_open = 1
-        above lopen
+        execute "above " . string(g:ShowContext_windowheight) . "new" 
+        setlocal buftype=nofile
+        setlocal bufhidden=hide
+        setlocal noswapfile
+        file contextlist
         wincmd p
     endif
 endfunction

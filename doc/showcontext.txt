@@ -32,7 +32,7 @@ Usage.......................................................*showcontext-usage*
 
 Simply map `Toggle_contextlist()` to use it.
 
-`nnoremap <leader>lc :call Toggle_contextlist()<CR>`
+`nnoremap <leader>lc :call ShowContext_toggle()<CR>`
 
 ==============================================================================
 Acknowledgements.................................*showcontext-acknowledgements*
