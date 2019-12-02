@@ -24,6 +24,7 @@ augroup created
     autocmd!
     autocmd VimEnter * let w:contextlist_open = 0
     autocmd WinEnter * if !exists('w:created') | let w:contextlist_open = 0 | endif
+    autocmd VimEnter * let w:created = 1
     autocmd VimEnter * autocmd WinEnter * let w:created=1
 augroup END
 
