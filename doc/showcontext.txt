@@ -35,6 +35,9 @@ Simply map `ShowContext_toggle()` to use it.
 
 `nnoremap <leader>lc :call ShowContext_toggle()<CR>`
 
+If you enter the context list, you can use the binding (default: <CR>) to jump
+to the corresponding line in the file.
+
 ==============================================================================
 Configuration.......................................*showcontext-configuration*
 
@@ -45,6 +48,10 @@ g:ShowContext_windowheight..........................................default: 15
 
 g:ShowContext_windowloc........................................default: "above"
     Where the contextlist opens. Either "above" or "below".
+
+g:ShowContext_jumpbinding.......................................default: "<CR>"
+    The keybinding (as a string) to use to jump to the corresponding line of
+    the buffer you are editing from the context list.
 
 ==============================================================================
 Acknowledgements.................................*showcontext-acknowledgements*
