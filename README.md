@@ -2,7 +2,7 @@
 
 showcontext.vim opens a scratch buffer in the current window that shows the last
 line with less than or equal indentation to the current line. This allows you to see where you are
-in a file without scrolling back up.
+in a file without scrolling back up. You can then jump to any line shown in the window with a configurable binding (Default:  Enter).
 
 ![](showcontext.gif)
 
