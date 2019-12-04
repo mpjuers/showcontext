@@ -1,6 +1,6 @@
 # What it is:
 
-showcontext.vim opens a location list in the current window that shows the last
+showcontext.vim opens a scratch buffer in the current window that shows the last
 line with less than or equal indentation to the current line. This allows you to see where you are
 in a file without scrolling back up.
 
